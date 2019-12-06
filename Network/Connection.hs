@@ -121,6 +121,8 @@ makeTLSParams cg cid ts@(TLSSettingsSimple {}) =
         , TLS.clientShared    = def
             { TLS.sharedCAStore         = globalCertificateStore cg
             , TLS.sharedValidationCache = validationCache
+            , TLS.sharedCredentials     = TLS.Credentials $ settingCertificates ts
+
             -- , TLS.sharedSessionManager  = connectionSessionManager
             }
         }
